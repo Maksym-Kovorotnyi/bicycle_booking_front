@@ -1,17 +1,14 @@
 Bicycles booking
-This project is a React-based front-end application for managing bikes for rent. It utilizes various libraries and tools to streamline development and testing processes.
+This project is a React-based front-end application for managing the rental of bicycles .
 
 Usage
 Clone the repository:
 
-1. git clone ;
+1. git clone https://github.com/Maksym-Kovorotnyi/bicycle_booking_front;
+2. cd bicycle_booking_front,
 
-Install dependencies:
+Install dependencies: 2. npm install; 3. npm start
 
-1. cd bicycle_booking_front,
-2. npm install;
-3. npm start
-
-!!!IMPORTANT:
+IMPORTANT:
 Don`t run this app on http://localhost:3000
 It`s default port for server
