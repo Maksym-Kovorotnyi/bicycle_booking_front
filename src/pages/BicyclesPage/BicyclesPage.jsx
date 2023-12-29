@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getBicycles } from "../../redux/bicycles/bicyclesOperations";
 import BicyclesList from "../../components/BicyclesList/BicyclesList";
-import AddBicyclesBtn from "../../components/AddBicyclesBtn/AddBicyclesBtn";
 import css from "./BicyclesPage.module.css";
 import CreateBicycleForm from "../../components/CreateBicycleForm/CreateBicycleForm";
+import BicyclesStatistic from "../../components/BicyclesStatistic/BicyclesStatistic";
 
 function BicyclesPage() {
   const dispatch = useDispatch();
@@ -14,9 +14,11 @@ function BicyclesPage() {
   });
   return (
     <div className={css.container}>
-      <CreateBicycleForm />
-      <AddBicyclesBtn />
       <BicyclesList />
+      <div className={css.formStatisticContainer}>
+        <CreateBicycleForm />
+        <BicyclesStatistic />
+      </div>
     </div>
   );
 }

@@ -1,25 +1,27 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { ReactComponent as CloseIcon } from "../../svg/closeIcon.svg";
 import {
-  deleteCompany,
-  getCompanies,
+  deleteBicycle,
+  getBicycles,
 } from "../../redux/bicycles/bicyclesOperations";
-import { toggleModal } from "../../redux/bicycles/bicyclesSlice";
 import css from "./BicyclesDeleteBtn.module.css";
-
 function BicyclesDeleteBtn() {
   const dispatch = useDispatch();
-  const handleDeletebtn = (e) => {
-    dispatch(deleteCompany(e.currentTarget.parentElement.id));
-    dispatch(toggleModal());
-    dispatch(getCompanies());
+  const handleDeletebtn = async (e) => {
+    try {
+      await dispatch(deleteBicycle(e.currentTarget.parentElement.id));
+      dispatch(getBicycles());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
-      <button className={css.btn} type="button" onClick={handleDeletebtn}>
+      <CloseIcon className={css.closeIcon} onClick={handleDeletebtn}>
         Delete
-      </button>
+      </CloseIcon>
     </>
   );
 }

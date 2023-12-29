@@ -1,13 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  companyDetail,
-  deleteCompany,
-  getBicycles,
-  updateStatus,
-} from "./bicyclesOperations";
+import { deleteBicycle, getBicycles, updateStatus } from "./bicyclesOperations";
 
 const bicyclesInitialState = {
-  bicycles: null,
+  bicycles: [],
   isLoading: false,
 };
 
@@ -26,25 +21,13 @@ export const bicyclesSlice = createSlice({
       state.bicycles = payload;
     });
 
-    builder.addCase(companyDetail.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
-      state.companyDetail = payload;
-    });
-    builder.addCase(companyDetail.rejected, (state, { payload }) => {
+    builder.addCase(deleteBicycle.fulfilled, (state) => {
       state.isLoading = false;
     });
-    builder.addCase(companyDetail.pending, (state) => {
-      state.isLoading = true;
-    });
-
-    builder.addCase(deleteCompany.fulfilled, (state) => {
-      state.isLoading = false;
-      state.companyDetail = null;
-    });
-    builder.addCase(deleteCompany.rejected, (state) => {
+    builder.addCase(deleteBicycle.rejected, (state) => {
       state.isLoading = false;
     });
-    builder.addCase(deleteCompany.pending, (state) => {
+    builder.addCase(deleteBicycle.pending, (state) => {
       state.isLoading = true;
     });
 

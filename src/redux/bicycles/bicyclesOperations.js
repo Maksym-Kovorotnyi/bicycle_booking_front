@@ -27,34 +27,12 @@ export const getBicycles = createAsyncThunk(
   }
 );
 
-export const companyDetail = createAsyncThunk(
-  "companies/detail",
+export const deleteBicycle = createAsyncThunk(
+  "bicycles/delete",
   async (id, { rejectWithValue, getState }) => {
-    const { accessToken } = getState().auth;
     try {
-      const response = await axios.get(`companies/detail/${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const deleteCompany = createAsyncThunk(
-  "companies/delete",
-  async (id, { rejectWithValue, getState }) => {
-    const { accessToken } = getState().auth;
-    try {
-      const response = await axios.delete(`companies/delete/${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      return response.data;
+      await axios.delete(`bicycles/${id}`);
+      return;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -62,11 +40,11 @@ export const deleteCompany = createAsyncThunk(
 );
 
 export const updateStatus = createAsyncThunk(
-  "bicycles_update",
+  "bicycles/update",
   async ({ id, body }, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(`bicycles/${id}`, body);
-      return response.data;
+      await axios.patch(`bicycles/${id}`, body);
+      return;
     } catch (error) {
       return rejectWithValue(error);
     }

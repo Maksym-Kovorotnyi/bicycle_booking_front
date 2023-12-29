@@ -1,0 +1,29 @@
+.statusContainer {
+    position: relative;
+    margin-left: 3px;
+}
+
+.statusContainer:hover {
+    cursor: pointer;
+}
+
+.statusList {
+    position: absolute;
+    right: -50%;
+    list-style: none;
+    background: #f2f2f2;
+    padding: 0;
+}
+
+.statusItem {
+    width: 100%;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.statusItem:hover,
+.statusItem:focus {
+    color: white;
+    background-color: rgb(49, 49, 102);
+}

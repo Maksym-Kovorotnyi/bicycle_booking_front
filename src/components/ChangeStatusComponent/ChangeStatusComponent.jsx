@@ -1,42 +1,51 @@
 import React, { useState } from "react";
 import { ReactComponent as ArrowIcon } from "../../svg/arrowDown.svg";
 import { useDispatch } from "react-redux";
-import { updateStatus } from "../../redux/bicycles/bicyclesOperations";
+import {
+  getBicycles,
+  updateStatus,
+} from "../../redux/bicycles/bicyclesOperations";
+
+import css from "./ChangeStatusComponent.module.css";
 
 function ChangeStatusComponent() {
   const [statusList, setStatusList] = useState(false);
   const dispatch = useDispatch();
 
-  const handleChangeStatus = (e) => {
-    const idEl = e.currentTarget.parentElement.id;
-    const value = { status: e.target.innerText?.toLowerCase() };
-    switch (e.target.localName) {
-      case "svg":
-        setStatusList(!statusList);
-        break;
-      case "path":
-        setStatusList(!statusList);
-        break;
-      case "p":
-        dispatch(updateStatus({ id: idEl, body: value }));
-        setStatusList(!statusList);
-        break;
-
-      default:
-        setStatusList(false);
-        break;
+  const handleChangeStatus = async (e) => {
+    const idEl = e.currentTarget.parentElement.parentElement.id;
+    const value = { status: e.target.innerText };
+    console.dir(e.target.localName);
+    try {
+      switch (e.target.localName) {
+        case "div":
+        case "svg":
+        case "path":
+          setStatusList(!statusList);
+          break;
+        case "li":
+          await dispatch(updateStatus({ id: idEl, body: value }));
+          setStatusList(!statusList);
+          dispatch(getBicycles());
+          break;
+        default:
+          setStatusList(false);
+          break;
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
-    <div onClick={handleChangeStatus}>
+    <div className={css.statusContainer} onClick={handleChangeStatus}>
       <ArrowIcon />
       {statusList ? (
-        <div>
-          <p>Available</p>
-          <p>Busy</p>
-          <p>Unavailable</p>
-        </div>
+        <ul className={css.statusList}>
+          <li className={css.statusItem}>Available</li>
+          <li className={css.statusItem}>Busy</li>
+          <li className={css.statusItem}>Unavailable</li>
+        </ul>
       ) : (
         ""
       )}

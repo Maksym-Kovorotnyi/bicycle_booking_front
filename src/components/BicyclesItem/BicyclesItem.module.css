@@ -1,27 +1,77 @@
 .item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    width: 200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px 12px 12px 18px;
+    border-radius: 10px;
+    border: 2px solid #6FCF97;
+    background: #E8E8E8;
+    margin-bottom: 12px;
 }
 
+.item:hover {
+    transform: scale(1.01);
+    transition: transform 0.3s ease-in-out;
+}
+
+.item.Available {
+    border: 2px solid #6FCF97;
+}
+
+.item.Busy {
+    border: 2px solid #F2994A;
+}
+
+.item.Unavailable {
+    border: 2px solid #EB5757;
+    opacity: 0.5;
+    background: #E8E8E8;
+}
+
+.closeIcon {
+    margin-right: auto;
+}
 
 .title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 8px;
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 
 .text {
+    font-weight: 400;
     font-size: 14px;
-    color: #555;
+    color: #333;
 }
 
-.item:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+.id {
+    color: #717171;
+    font-size: 8px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.statusContainer {
+    display: flex;
+    align-items: center;
+}
+
+.status {
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.price {
+    color: #000;
+    font-family: Saira;
+    font-size: 24px;
+    font-weight: 400;
+    margin-left: auto;
+    margin-top: 0;
+    margin-bottom: 0;
 }
