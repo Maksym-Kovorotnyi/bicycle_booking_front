@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   createBicycle,
   getBicycles,
@@ -8,9 +8,21 @@ import css from "./CreateBicycleForm.module.css";
 
 function CreateBicycleForm() {
   const dispatch = useDispatch();
+  const bicycles = useSelector((state) => state.bicycles);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formatPrice = e.currentTarget.elements.price.value.replace(",", ".");
+    const idCheck = bicycles.find(
+      (bike) => bike._id === Number(e.currentTarget.elements.id.value)
+    );
+    if (!/^\d*[.]?\d*$/.test(formatPrice)) {
+      alert("The price must be a numerical value");
+      return;
+    } else if (idCheck) {
+      alert("This ID already exists");
+      return;
+    }
     const newBicycle = {
       name: e.currentTarget.elements.name.value,
       type: e.currentTarget.elements.type.value,

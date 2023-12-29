@@ -15,7 +15,6 @@ function ChangeStatusComponent() {
   const handleChangeStatus = async (e) => {
     const idEl = e.currentTarget.parentElement.parentElement.id;
     const value = { status: e.target.innerText };
-    console.dir(e.target.localName);
     try {
       switch (e.target.localName) {
         case "div":

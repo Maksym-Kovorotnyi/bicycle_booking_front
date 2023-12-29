@@ -1,0 +1,28 @@
+.header {
+    padding: 4px 16px;
+    background: #696969;
+}
+
+.title {
+    color: #E8E8E8;
+    font-family: Saira Stencil One;
+    font-size: 24px;
+    font-weight: 400;
+
+}
+
+.footer {
+    padding: 10px;
+    background: #696969;
+    text-align: end;
+}
+
+.text {
+    color: #CBCACA;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.myName {
+    color: #FFF;
+}
